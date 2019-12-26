@@ -1,7 +1,5 @@
 package sebastian.osorios.udea.calculatormx
 
-import sebastian.osorios.udea.calculatormx.PrintToDisplay
-import java.lang.Error
 
 class PerformOperations {
     var result : Int = 0
@@ -18,7 +16,11 @@ class PerformOperations {
     }
 
     private  fun div(oldValue:Int ,newValue : Int): Int {
+        if(newValue != 0) {
             return oldValue / newValue
+        }else{
+            return error("Math Error")
+        }
     }
 
     fun selectOperation(oldValue:Int ,newValue : Int,opertaion : String): Int{

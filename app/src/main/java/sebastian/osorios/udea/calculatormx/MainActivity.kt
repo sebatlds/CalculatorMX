@@ -9,13 +9,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val printToDisplay = PrintToDisplay();
+        val printToDisplay = PrintToDisplay()
         val performOperations = PerformOperations()
         var oldValue = 0
         var newValue = 0
         var valueConcat = "0"
         var result : Int
-        var check = false
+        var check = true
         var operations = ""
         var priority = 0
         var opertationAuxiliar = ""
@@ -185,6 +185,8 @@ class MainActivity : AppCompatActivity() {
             newValue=0
             oldValue=0
             valueConcat="0"
+            opertationAuxiliar=""
+            operations=""
             result = 0
             check = true
         }

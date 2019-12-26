@@ -7,6 +7,7 @@ class PrintToDisplay{
 
     fun writeNumber(oldValue:String ,newValue : String) : String {
         if(!oldValue.equals("0")) {
+            //todo poner formato 2.000 y asi
             return oldValue + newValue
         }else{
             return newValue
