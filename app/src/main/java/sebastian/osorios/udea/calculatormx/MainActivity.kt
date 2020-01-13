@@ -11,10 +11,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val printToDisplay = PrintToDisplay()
         val performOperations = PerformOperations()
-        var oldValue = 0
-        var newValue = 0
+        var oldValue : Float = 0F
+        var newValue : Float = 0F
         var valueConcat = "0"
-        var result : Int
+        var result : Float
         var check = true
         var operations = ""
         var priority = 0
@@ -76,19 +76,19 @@ class MainActivity : AppCompatActivity() {
 
         buttonAdd.setOnClickListener{
             displayOperations.text = printToDisplay.writeOperation(displayOperations.text.toString(),buttonAdd.text.toString())
-            if(newValue!=0 && priority==2){
+            if(newValue!=0F && priority==2){
                 oldValue = newValue
-                newValue = performOperations.selectOperation(oldValue,valueConcat.toInt(),opertationAuxiliar)
+                newValue = performOperations.selectOperation(oldValue,valueConcat.toFloat(),opertationAuxiliar)
             }else if(priority == 1 && check){
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
                 newValue = performOperations.selectOperation(oldValue,newValue,opertationAuxiliar)
-                oldValue = 0
+                oldValue = 0F
                 operations = ""
             }else if(!check && priority == 1){
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
                 operations = ""
             }else{
-                newValue =  valueConcat.toInt()
+                newValue =  valueConcat.toFloat()
             }
             valueConcat = "0"
             opertationAuxiliar = buttonAdd.text.toString()
@@ -97,19 +97,19 @@ class MainActivity : AppCompatActivity() {
 
         buttonSubstract.setOnClickListener{
             displayOperations.text = printToDisplay.writeOperation(displayOperations.text.toString(),buttonSubstract.text.toString())
-            if(newValue!=0 && priority==2){
+            if(newValue!=0F && priority==2){
                 oldValue = newValue
-                newValue = performOperations.selectOperation(oldValue,valueConcat.toInt(),opertationAuxiliar)
+                newValue = performOperations.selectOperation(oldValue,valueConcat.toFloat(),opertationAuxiliar)
             }else if(priority == 1 && check){
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
                 newValue = performOperations.selectOperation(oldValue,newValue,opertationAuxiliar)
-                oldValue = 0
+                oldValue = 0F
                 operations = ""
             }else if(!check){
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
                 operations = ""
             }else{
-                newValue =  valueConcat.toInt()
+                newValue =  valueConcat.toFloat()
             }
             valueConcat = "0"
             opertationAuxiliar = buttonSubstract.text.toString()
@@ -121,18 +121,18 @@ class MainActivity : AppCompatActivity() {
 
             if(opertationAuxiliar.isEmpty() && check){
                 oldValue = newValue
-                newValue = valueConcat.toInt()
+                newValue = valueConcat.toFloat()
                 valueConcat = "0"
                 check = false
                 operations = buttonMultiply.text.toString()
             } else if(priority == 2){
                 oldValue = newValue
-                newValue = valueConcat.toInt()
+                newValue = valueConcat.toFloat()
                 valueConcat = "0"
                 operations = buttonMultiply.text.toString()
                 check = true
             }else{
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
                 valueConcat = "0"
                 operations = buttonMultiply.text.toString()
             }
@@ -144,18 +144,18 @@ class MainActivity : AppCompatActivity() {
 
             if(opertationAuxiliar.isEmpty() && check){
                 oldValue = newValue
-                newValue = valueConcat.toInt()
+                newValue = valueConcat.toFloat()
                 valueConcat = "0"
                 check = false
                 operations = buttonDiv.text.toString()
             } else if(priority == 2){
                 oldValue = newValue
-                newValue = valueConcat.toInt()
+                newValue = valueConcat.toFloat()
                 valueConcat = "0"
                 operations = buttonDiv.text.toString()
                 check = true
             }else{
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
                 valueConcat = "0"
                 operations = buttonDiv.text.toString()
             }
@@ -164,30 +164,30 @@ class MainActivity : AppCompatActivity() {
 
 
         buttonEquals.setOnClickListener{
-            if(newValue!=0 && priority == 2){
+            if(newValue!=0F && priority == 2){
                 oldValue = newValue
-                newValue = 0
-                newValue = valueConcat.toInt()
+                newValue = 0F
+                newValue = valueConcat.toFloat()
             }else if(priority == 1){
-                newValue = performOperations.selectOperation(newValue,valueConcat.toInt(),operations)
+                newValue = performOperations.selectOperation(newValue,valueConcat.toFloat(),operations)
             }
             valueConcat = "0"
-            result = performOperations.selectOperation(oldValue,newValue,opertationAuxiliar).toString().toInt()
+            result = performOperations.selectOperation(oldValue,newValue,opertationAuxiliar).toString().toFloat()
             displayOperations.text =  result.toString()
-            oldValue = 0
-            newValue = displayOperations.text.toString().replace(buttonEquals.text.toString() +" ","").toInt()
+            oldValue = 0F
+            newValue = displayOperations.text.toString().replace(buttonEquals.text.toString() +" ","").toFloat()
             operations = ""
             check = true
         }
 
         buttonDelete.setOnClickListener{
             displayOperations.text=""
-            newValue=0
-            oldValue=0
+            newValue=0F
+            oldValue=0F
             valueConcat="0"
             opertationAuxiliar=""
             operations=""
-            result = 0
+            result = 0f
             check = true
         }
 

@@ -2,28 +2,28 @@ package sebastian.osorios.udea.calculatormx
 
 
 class PerformOperations {
-    var result : Int = 0
+    var result : Float = 0F
 
-    private  fun add(oldValue:Int ,newValue : Int): Int{
+    private  fun add(oldValue:Float ,newValue : Float): Float{
         return oldValue+newValue
     }
-    private  fun substract(oldValue:Int ,newValue : Int): Int{
+    private  fun substract(oldValue:Float ,newValue : Float): Float{
         return oldValue-newValue
     }
 
-    private  fun multiply(oldValue:Int ,newValue : Int): Int{
+    private  fun multiply(oldValue:Float ,newValue : Float): Float{
         return oldValue*newValue
     }
 
-    private  fun div(oldValue:Int ,newValue : Int): Int {
-        if(newValue != 0) {
+    private  fun div(oldValue:Float ,newValue : Float): Float {
+        if(newValue != 0F) {
             return oldValue / newValue
         }else{
             return error("Math Error")
         }
     }
 
-    fun selectOperation(oldValue:Int ,newValue : Int,opertaion : String): Int{
+    fun selectOperation(oldValue:Float ,newValue : Float,opertaion : String): Float{
 
         when (opertaion) {
             "+" -> {
@@ -44,7 +44,8 @@ class PerformOperations {
                 //agregar erroe
             }
         }
-        return result
+
+        return removeDecimals(result.toString()).toFloat()
     }
 
     fun concatNumber(number : String, valueConcat : String): String {
@@ -62,6 +63,23 @@ class PerformOperations {
             return 2
         }else{
             return 1
+        }
+    }
+
+    fun removeDecimals(resulta : String) : String{
+        var index : Int = resulta.indexOf(".")
+        var chain = resulta.substring(index+1)
+        var check = false
+        for(i in 0..chain.length-1){
+            if(!chain[i].toString().equals("0")){
+                check = true
+            }
+        }
+        var a =resulta.substring(0,index)
+        if(check){
+            return resulta
+        }else{
+            return resulta.substring(0,index)
         }
     }
 
